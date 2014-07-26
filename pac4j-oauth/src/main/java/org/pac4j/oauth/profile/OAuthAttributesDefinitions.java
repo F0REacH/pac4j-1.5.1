@@ -24,12 +24,15 @@ import org.pac4j.oauth.profile.github.GitHubAttributesDefinition;
 import org.pac4j.oauth.profile.google2.Google2AttributesDefinition;
 import org.pac4j.oauth.profile.linkedin.LinkedInAttributesDefinition;
 import org.pac4j.oauth.profile.linkedin2.LinkedIn2AttributesDefinition;
+import org.pac4j.oauth.profile.mailru.MailruAttributesDefinition;
+import org.pac4j.oauth.profile.odnoklassniki.OdnoklassnikiAttributesDefinition;
 import org.pac4j.oauth.profile.paypal.PayPalAttributesDefinition;
 import org.pac4j.oauth.profile.twitter.TwitterAttributesDefinition;
 import org.pac4j.oauth.profile.vk.VkAttributesDefinition;
 import org.pac4j.oauth.profile.windowslive.WindowsLiveAttributesDefinition;
 import org.pac4j.oauth.profile.wordpress.WordPressAttributesDefinition;
 import org.pac4j.oauth.profile.yahoo.YahooAttributesDefinition;
+import org.pac4j.oauth.profile.yandex.YandexAttributesDefinition;
 
 /**
  * This class defines all the attributes definitions.
@@ -66,4 +69,10 @@ public final class OAuthAttributesDefinitions {
     public final static AttributesDefinition foursquareDefinition = new FoursquareAttributesDefinition();
     
     public final static AttributesDefinition bitbucketDefinition = new BitbucketAttributesDefinition();
+
+    public final static AttributesDefinition yandexDefinition = new YandexAttributesDefinition();
+
+    public final static AttributesDefinition mailruDefinition = new MailruAttributesDefinition();
+
+    public final static AttributesDefinition odnoklassnikiDefinition = new OdnoklassnikiAttributesDefinition();
 }

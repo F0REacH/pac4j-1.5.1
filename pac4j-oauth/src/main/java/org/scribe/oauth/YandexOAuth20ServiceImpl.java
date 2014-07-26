@@ -1,7 +1,36 @@
 package org.scribe.oauth;
 
-/**
- * Created by foreach on 25.07.14.
- */
-public class YandexOAuth20ServiceImpl {
+import org.scribe.builder.api.DefaultApi20;
+import org.scribe.model.*;
+
+public class YandexOAuth20ServiceImpl extends OAuth20ServiceImpl
+{
+    private final DefaultApi20 api;
+    private final OAuthConfig config;
+
+    public YandexOAuth20ServiceImpl(DefaultApi20 api, OAuthConfig config)
+    {
+        super(api, config);
+        this.api = api;
+        this.config = config;
+    }
+
+    @Override
+    public Token getAccessToken(Token requestToken, Verifier verifier)
+    {
+        OAuthRequest request = new OAuthRequest(api.getAccessTokenVerb(), api.getAccessTokenEndpoint());
+        request.addBodyParameter("grant_type", "authorization_code");
+        request.addBodyParameter(OAuthConstants.CODE, verifier.getValue());
+        request.addBodyParameter(OAuthConstants.CLIENT_ID, config.getApiKey());
+        request.addBodyParameter(OAuthConstants.CLIENT_SECRET, config.getApiSecret());
+
+        Response response = request.send();
+        return api.getAccessTokenExtractor().extract(response.getBody());
+    }
+
+    @Override
+    public void signRequest(Token accessToken, OAuthRequest request)
+    {
+        request.addQuerystringParameter("oauth_token", accessToken.getToken());
+    }
 }

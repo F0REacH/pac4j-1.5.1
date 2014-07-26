@@ -76,7 +76,13 @@
             <artifactId>kryo</artifactId>
             <scope>test</scope>
         </dependency>
-		<!-- for testing -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.9</version>
+        </dependency>
+
+        <!-- for testing -->
 	</dependencies>
 
 	<build>
